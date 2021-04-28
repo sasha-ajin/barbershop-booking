@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load static %}
+    <main style="width: 100%">
+        <div class="container register-container" style="padding-top: 2%">
+            <div class="row justify-content-center" style="padding-bottom: 3%">
+                <img style="max-width: 20%" src="{{ barber.photo.url }}">
+            </div>
+            <div class="row justify-content-center" style="padding-bottom: 3%"><h2>Book for
+                tomorrow!</h2></div>
+            <div class="row justify-content-center">
+
+                <form id="form">
+                    <label for="user-name">Barber</label><br>
+                    <input name="barber" type="text" id="user-name" value="{{ barber_name }}" readonly><br><br>
+
+                    <label for="user-name">Your name</label><br>
+                    <input name="name" type="text" id="user-name" placeholder="First name" required><br><br>
+
+                    <label for="user-last-phone">Phone</label><br>
+                    <input name="phone" type="text" id="user-last-phone" placeholder="Phone" required><br><br>
+
+                    <label for="user-email">Choose your email</label><br>
+                    <input name="email" type="email"  alt="Update your browser or change it" placeholder="@gmail.com" id="user-email"><br><br>
+
+                    <label for="select-user-country" >Choose time</label><br>
+                    <select name="time" id="select-user-country" required>
+
+                        {% for i in times %}
+                            {% if i not in times_barber %}
+                                <option value="{{ i }}" >{{ i }}</option>
+                            {% endif %}
+                        {% endfor %}
+
+                    </select><br><br>
+
+                    <div class="regiser-container" style="margin-bottom: 10%">
+                        <button  class="btn btn-success" id="submit">Book</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+<script type="text/javascript" src="{%static 'book.js'%}"></script>
+
+{% endblock %}

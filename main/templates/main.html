@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load static %}
+    <main class="flex-cont">
+        <div class="main-dv flex-cont"
+             style="background-size: cover; background-image: url({% static 'images/bg.jpeg' %})">
+            <img src="{% static 'images/label.png' %}" style="max-width: 80%">
+            <h1 style="color: white; margin-top: 5%;max-width: 80%">First-class service in a unique
+                atmosphere</h1>
+            <h5 style="color: white;max-width: 80%" ">For more than 5 years, we have been helping you maintain your
+            beard and always look
+            your best..</h5>
+            <div style="padding-bottom: 3%;padding-top: 3%">
+                <a href="#brbs"><button type="button" class="btn btn-primary btn-lg btn-block" style="max-width: 150px">Book bellow!
+                </button></a>
+            </div>
+        </div>
+
+        {# TABLE PRICING  #}
+        <div style="width: 80% ; margin-top: 2.5%">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col" style="padding-left: 15%"><h1>PRICING</h1></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Fade</td>
+                    <td></td>
+                    <td>5 EUR</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Pruning</td>
+                    <td></td>
+                    <td>4 EUR</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Beard shape with a typewriter</td>
+                    <td></td>
+                    <td>9 EUR</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Smooth beard shaving (warm towel)</td>
+                    <td></td>
+                    <td>8 EUR</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>Floss cleaning</td>
+                    <td></td>
+                    <td>6 EUR</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        {# Barbers#}
+        <div style="background: black;width: 100%;margin-top: 5%;">
+            <div class="">
+                <div class="row justify-content-center " style="margin-bottom: 5%;margin-top: 5%;">
+                    <h1 style="color: white" id="brbs">Our barbers</h1>
+                </div>
+
+                <div class="row justify-content-center " style="margin-bottom: 5%;margin-top: 5%;">
+                    {% for barber in barbers %}
+                        <div class="col-md-4 col-lg-2 col-sm-12 my-auto order-md-1 " style="margin :5%;padding-bottom: 3%">
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="{{ barber.photo.url }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ barber.name }}</h5>
+                                    <p class="card-text">Our top barber!</p>
+                                    {% if barber.free %}
+                                        <a href="book/{{ barber.name }}">
+                                            <button type="button" class="btn btn-primary">Book time
+                                                with {{ barber.name }}
+                                            </button>
+                                        </a>
+                                    {% else %}
+                                        <a href="">
+                                            <button type="button" disabled class="btn btn-secondary">{{ barber.name }}'s
+                                                not
+                                                free tomorrow
+                                            </button>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
