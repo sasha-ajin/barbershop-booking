@@ -2,7 +2,7 @@ console.log('Js file works')
 
 var form = document.getElementById('form')
 csrftoken = form.getElementsByTagName("input")[0].value
-// console.log('NewToken:',form.getElementsByTagName("input")[0].value)
+//console.log('NewToken:',form.getElementsByTagName("input")[0].value)
 
 form.addEventListener('submit', function (e) {
     e.preventDefault()
