@@ -5,13 +5,14 @@
     <main style="width: 100%">
         <div class="container register-container" style="padding-top: 2%">
             <div class="row justify-content-center" style="padding-bottom: 3%">
-                <img style="max-width: 20%" src="{{ barber.photo.url }}">
+                <img style="max-width: 20%" src="static 'images/{{ barber.name }}.jpeg'">
             </div>
             <div class="row justify-content-center" style="padding-bottom: 3%"><h2>Book for
                 tomorrow!</h2></div>
             <div class="row justify-content-center">
 
                 <form id="form">
+                {% csrf_token %}
                     <label for="user-name">Barber</label><br>
                     <input name="barber" type="text" id="user-name" value="{{ barber_name }}" readonly><br><br>
 
