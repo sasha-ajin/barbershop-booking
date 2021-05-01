@@ -6,8 +6,10 @@ csrftoken = form.getElementsByTagName("input")[0].value
 
 form.addEventListener('submit', function (e) {
     e.preventDefault()
-    console.log('Form submitted')
-    booking()
+    if (confirm('Are you sure' + ' you want to book your time with ' + form.barber.value + ' for tomorrow in ' +
+        form.time.value + '?')) {
+        booking()
+    }
 })
 
 function booking() {
